@@ -1,0 +1,13 @@
+# .streamlit/config.toml
+[runner]
+magicEnabled = false
+
+[client]
+caching = true
+showErrorDetails = false
+
+[server]
+port = 8501
+
+[browser]
+serverAddress = "localhost"

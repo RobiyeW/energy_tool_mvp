@@ -46,10 +46,14 @@ def excel_date_converter(date_val):
         if isinstance(date_val, (int, float)):
             # Excel date conversion: Excel's epoch starts on 1899-12-30
             return (datetime(1899, 12, 30) + pd.DateOffset(days=date_val)).strftime('%Y-%m-%d')
-        return pd.to_datetime(date_val).strftime('%Y-%m-%d')
+        
+        # Specify the date format (adjust based on your data)
+        return pd.to_datetime(date_val, format='%Y-%m-%d', errors='coerce').strftime('%Y-%m-%d')
+    
     except Exception as e:
         logging.warning(f"Could not convert date {date_val}: {e}")
         return None
+
 
 def clean_iea_data(file_path):
     """
